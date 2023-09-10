@@ -1,0 +1,14 @@
+from machine import Pin  # Import the Pin module from the machine library.
+import utime  # Import the utime module for timing functions.
+pir_sensor = Pin(28, Pin.IN)  # Initialize a pin (pin 28) as an input pin for the PIR sensor.
+led = Pin(15, Pin.OUT)  # Initialize a pin (pin 15) as an output pin for the LED.
+buzzer = Pin(16, Pin.OUT)  # Initialize a pin (pin 16) as an output pin for the buzzer.
+while True:
+    if pir_sensor.value() == 1:
+      for i in range(50):
+          led.toggle()  # Toggle the LED state (ON/OFF).
+          buzzer.toggle()  # Toggle the buzzer state (ON/OFF).
+          utime.sleep(0.1)  # Wait for 0.1 seconds (100 milliseconds).
+else:
+      led.value(0)  # Turn off the LED.
+      buzzer.value(0)  # Turn off the buzzer.
